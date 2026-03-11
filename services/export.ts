@@ -7,7 +7,7 @@ import { DAYS, SUBJECT_COLORS } from '../constants';
 import { getFullGradeWeekData, getSettings } from './storage';
 
 // Helper to convert hex to rgb
-const hexToRgb = (hex: string) => {
+const hexToRgb = (hex: string): [number, number, number] => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? [
     parseInt(result[1], 16),
@@ -165,9 +165,9 @@ export const exportToPDF = async (plan: WeeklyPlan) => {
       valign: 'middle'
     },
     columnStyles: {
-      0: { fontStyle: 'bold', width: 25 },
-      2: { width: 60 },
-      3: { width: 50 },
+      0: { fontStyle: 'bold', cellWidth: 25 },
+      2: { cellWidth: 60 },
+      3: { cellWidth: 50 },
     },
     didParseCell: function(data: any) {
         // Force Right Align for everything to support Arabic better, or check logic
@@ -300,12 +300,12 @@ export const exportGradeMasterPDF = async (grade: string, week: number) => {
         lineColor: [220, 220, 220]
       },
       columnStyles: {
-        0: { fontStyle: 'bold', width: 18 }, // Day
-        1: { width: 45 }, // CW
-        2: { width: 45 }, // HW
-        3: { width: 25 }, // Items
-        4: { width: 25 }, // Tests
-        5: { width: 25 }, // Events
+        0: { fontStyle: 'bold', cellWidth: 18 }, // Day
+        1: { cellWidth: 45 }, // CW
+        2: { cellWidth: 45 }, // HW
+        3: { cellWidth: 25 }, // Items
+        4: { cellWidth: 25 }, // Tests
+        5: { cellWidth: 25 }, // Events
       },
       margin: { left: 14, right: 14 },
       didParseCell: function(data: any) {
