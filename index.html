@@ -1,58 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Al-Muallim Planner</title>
+    <title>Letter Engineer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#0f766e', // teal-700
-              secondary: '#f59e0b', // amber-500
-              accent: '#3b82f6', // blue-500
-              background: '#f3f4f6',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              cream: '#F9F9F7',
+              charcoal: '#1A1A1B'
             }
           }
         }
-      }
+      };
     </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-      /* Custom scrollbar for table containers */
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
+      :root { --base-font: 'Inter', sans-serif; }
+      html { font-family: var(--base-font); }
+      .lang-ar { --base-font: 'IBM Plex Sans Arabic', sans-serif; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 1px;
+        background: #1A1A1B;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
       }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+      .nav-link:hover::after,
+      .nav-link:focus-visible::after { transform: scaleX(1); }
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "jspdf": "https://aistudiocdn.com/jspdf@^3.0.4",
-    "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
-    "jspdf-autotable": "https://aistudiocdn.com/jspdf-autotable@^5.0.2",
-    "xlsx": "https://aistudiocdn.com/xlsx@^0.18.5"
-  }
-}
-</script>
-</head>
-  <body class="bg-gray-50 text-gray-800 font-sans antialiased">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+  </head>
+  <body class="bg-cream text-charcoal antialiased">
+    <header class="sticky top-0 z-50 bg-cream/70 backdrop-blur-sm">
+      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-6 py-6 sm:px-10 lg:grid-cols-3 lg:items-center lg:px-16">
+        <p class="text-sm tracking-[0.2em]" data-i18n="logo">Letter Engineer | مهندس الحروف</p>
+        <nav class="flex items-center justify-start gap-8 lg:justify-center">
+          <a href="#lab" class="nav-link relative text-sm" data-i18n="navLab">Lab</a>
+          <a href="#gallery" class="nav-link relative text-sm" data-i18n="navGallery">Gallery</a>
+          <a href="#contact" class="nav-link relative text-sm" data-i18n="navContact">Contact</a>
+        </nav>
+        <div class="flex lg:justify-end">
+          <button id="langToggle" class="rounded-full border border-charcoal px-4 py-2 text-sm transition hover:bg-charcoal hover:text-cream" data-i18n="langButton">عربي</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl space-y-32 px-6 py-12 sm:px-10 lg:space-y-44 lg:px-16 lg:py-20">
+      <section class="reveal grid gap-12 lg:grid-cols-2 lg:items-center" id="hero">
+        <div class="order-2 lg:order-1">
+          <img src="https://via.placeholder.com/300x400" alt="Professional black and white portrait placeholder" class="w-full max-w-md object-cover" />
+        </div>
+        <div class="order-1 space-y-8 lg:order-2">
+          <p class="text-2xl font-light leading-relaxed sm:text-3xl" data-i18n="heroQuote">
+            I see Square Kufic as a chess match between me and the letters; it only reveals its secrets to those who understand its language.
+          </p>
+        </div>
+      </section>
+
+      <section class="reveal" id="lab">
+        <div class="grid gap-8 lg:grid-cols-12">
+          <h2 class="lg:col-span-4 text-3xl font-semibold tracking-wide" data-i18n="labTitle">The Lab</h2>
+          <div class="space-y-8 lg:col-span-8">
+            <p class="max-w-3xl text-lg leading-relaxed" data-i18n="labSlogan">
+              Square Kufic Grid Generator for Inkscape.. Forget the grid-building struggle and focus on the art!
+            </p>
+            <a href="#" class="inline-flex rounded-md bg-charcoal px-6 py-3 text-sm font-medium text-cream transition hover:opacity-90" data-i18n="labButton">Download on GitLab</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal space-y-10" id="gallery">
+        <div class="space-y-4">
+          <h2 class="text-3xl font-semibold" data-i18n="galleryTitle">The Gallery</h2>
+          <p class="text-lg" data-i18n="galleryIntro">Square Kufic.. Ancient magic with a modern touch</p>
+        </div>
+        <div class="grid auto-rows-[180px] grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <figure class="group relative overflow-hidden sm:col-span-2 sm:row-span-2">
+            <img src="https://via.placeholder.com/600x600/1A1A1B/FFFFFF?text=Kufic+Verse+1" alt="Kufic Verse 1" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:row-span-2">
+            <img src="https://via.placeholder.com/400x600/1A1A1B/FFFFFF?text=Kufic+Verse+2" alt="Kufic Verse 2" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:col-span-1">
+            <img src="https://via.placeholder.com/600x400/1A1A1B/FFFFFF?text=Kufic+Verse+3" alt="Kufic Verse 3" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:col-span-1">
+            <img src="https://via.placeholder.com/500x500/1A1A1B/FFFFFF?text=Kufic+Verse+4" alt="Kufic Verse 4" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:col-span-2">
+            <img src="https://via.placeholder.com/900x400/1A1A1B/FFFFFF?text=Kufic+Verse+5" alt="Kufic Verse 5" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:row-span-2">
+            <img src="https://via.placeholder.com/400x650/1A1A1B/FFFFFF?text=Kufic+Verse+6" alt="Kufic Verse 6" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:col-span-1">
+            <img src="https://via.placeholder.com/600x400/1A1A1B/FFFFFF?text=Kufic+Verse+7" alt="Kufic Verse 7" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+          <figure class="group relative overflow-hidden sm:col-span-1">
+            <img src="https://via.placeholder.com/500x700/1A1A1B/FFFFFF?text=Kufic+Verse+8" alt="Kufic Verse 8" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="reveal border-t border-charcoal/20 pt-16" id="contact">
+        <p class="text-sm uppercase tracking-[0.2em]" data-i18n="contactLabel">Contact</p>
+        <p class="mt-4 text-lg" data-i18n="contactText">For commissions and collaborations: letter.engineer@example.com</p>
+      </section>
+    </main>
+
+    <script>
+      const content = {
+        en: {
+          logo: 'Letter Engineer | مهندس الحروف', navLab: 'Lab', navGallery: 'Gallery', navContact: 'Contact',
+          langButton: 'عربي',
+          heroQuote: 'I see Square Kufic as a chess match between me and the letters; it only reveals its secrets to those who understand its language.',
+          labTitle: 'The Lab',
+          labSlogan: 'Square Kufic Grid Generator for Inkscape.. Forget the grid-building struggle and focus on the art!',
+          labButton: 'Download on GitLab',
+          galleryTitle: 'The Gallery',
+          galleryIntro: 'Square Kufic.. Ancient magic with a modern touch',
+          contactLabel: 'Contact',
+          contactText: 'For commissions and collaborations: letter.engineer@example.com'
+        },
+        ar: {
+          logo: 'مهندس الحروف | Letter Engineer', navLab: 'المعمل', navGallery: 'الرواق', navContact: 'تواصل',
+          langButton: 'English',
+          heroQuote: 'أرى الكوفي التربيعي كمباراة شطرنج بيني وبين الحروف، لا تبوح بأسرارها إلا لمن يفهم لغتها.',
+          labTitle: 'المعمل',
+          labSlogan: 'مولد شبكات الكوفي التربيعي لإنكسكيب.. دع هم بناء الشبكات وركز على الفن!',
+          labButton: 'تحميل من جيتلاب',
+          galleryTitle: 'الرواق',
+          galleryIntro: 'الكوفي التربيعي.. سحر الماضي بلمسة عصرية',
+          contactLabel: 'تواصل',
+          contactText: 'للطلبات والتعاون: letter.engineer@example.com'
+        }
+      };
+
+      const toggleBtn = document.getElementById('langToggle');
+      let lang = 'en';
+
+      function setLanguage(nextLang) {
+        lang = nextLang;
+        document.documentElement.lang = nextLang;
+        document.documentElement.dir = nextLang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.classList.toggle('lang-ar', nextLang === 'ar');
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.dataset.i18n;
+          if (content[nextLang][key]) el.textContent = content[nextLang][key];
+        });
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        setLanguage(lang === 'en' ? 'ar' : 'en');
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+      setLanguage('en');
+    </script>
   </body>
 </html>
